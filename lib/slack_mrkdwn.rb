@@ -38,7 +38,7 @@ class SlackMrkdwn < Redcarpet::Render::Base
 
   # Encode Slack restricted characters
   def preprocess(content)
-    content.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')
+    content.gsub('&', '&amp;').gsub(/\<(?!@|!|#)(.*?)\>/, '&lt;\1&gt;')
   end
 
   def postprocess(content)

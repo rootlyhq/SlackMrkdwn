@@ -28,6 +28,9 @@ describe SlackMrkdwn do
     Test.new('preserves paragraphs', 'My paragraph looks the same!', 'My paragraph looks the same!'),
     Test.new('preserves spacing between paragraphs', "My first paragraph!\n\nFollowed by another paragraph!", "My first paragraph!\n\nFollowed by another paragraph!"),
     Test.new('preserves spacing between lists and paragraphs', "Description of list:\n\n* List Element\n+ Another list element\n\nFollow up paragraph.", "Description of list:\n\n- List Element\n- Another list element\n\nFollow up paragraph."),
+    Test.new('preserves user mentions', "Hey <@U024BE7LH>, thanks for submitting your report.", "Hey <@U024BE7LH>, thanks for submitting your report."),
+    Test.new('preserves group mentions', "Hey <!subteam^SAZ94GDB8>, there's a new task in your queue.", "Hey <!subteam^SAZ94GDB8>, there's a new task in your queue."),
+    Test.new('preserves channel mentions', "Why not join <#C024BE7LR>?", "Why not join <#C024BE7LR>?"),
   ]
 
   tests.each do |t|
