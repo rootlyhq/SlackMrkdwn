@@ -22,6 +22,7 @@ describe SlackMrkdwn do
     Test.new('converts classic-style links with alt text', '[Classic-style link](https://www.google.com "With alt text")', '<https://www.google.com|Classic-style link>'),
     Test.new('converts reference-style links', "[Reference-style link][2]\n[2]: https://www.google.com", '<https://www.google.com|Reference-style link>'),
     Test.new('converts reference-style, text only links', "[Reference-style link, text only]\n[reference-style link, text only]: https://www.google.com", '<https://www.google.com|Reference-style link, text only>'),
+    Test.new('does not format underscores inside bare urls', 'https://example.com/__foo__/bar', 'https://example.com/__foo__/bar'),
 
     Test.new('preserves code spans', 'My `codespan` should be preserved...', 'My `codespan` should be preserved...'),
     Test.new('preserves leading spaces', "   Aligned text content", "   Aligned text content"),

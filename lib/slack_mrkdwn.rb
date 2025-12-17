@@ -5,7 +5,13 @@ class SlackMrkdwn < Redcarpet::Render::Base
   class << self
     def from(markdown)
       renderer = SlackMrkdwn.new
-      Redcarpet::Markdown.new(renderer, strikethrough: true, underline: true, fenced_code_blocks: true).render(markdown)
+      Redcarpet::Markdown.new(
+        renderer,
+        strikethrough: true,
+        underline: true,
+        fenced_code_blocks: true,
+        autolink: true
+      ).render(markdown)
     end
   end
 
