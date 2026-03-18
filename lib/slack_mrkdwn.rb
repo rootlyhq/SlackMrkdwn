@@ -44,7 +44,11 @@ class SlackMrkdwn < Redcarpet::Render::Base
 
   # Encode Slack restricted characters
   def preprocess(content)
-    content.gsub('&', '&amp;').gsub(/\<(?!@|!|#)(.*?)\>/, '&lt;\1&gt;')
+    content
+      .gsub(/<(https?:\/\/[^|>\s]+)\|([^>]+)>/, '[\2](\1)')
+      .gsub(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/i, '[\2](\1)')
+      .gsub('&', '&amp;')
+      .gsub(/\<(?!@|!|#)(.*?)\>/, '&lt;\1&gt;')
   end
 
   def postprocess(content)

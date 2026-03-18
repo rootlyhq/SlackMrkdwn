@@ -32,6 +32,8 @@ describe SlackMrkdwn do
     Test.new('preserves user mentions', "Hey <@U024BE7LH>, thanks for submitting your report.", "Hey <@U024BE7LH>, thanks for submitting your report."),
     Test.new('preserves group mentions', "Hey <!subteam^SAZ94GDB8>, there's a new task in your queue.", "Hey <!subteam^SAZ94GDB8>, there's a new task in your queue."),
     Test.new('preserves channel mentions', "Why not join <#C024BE7LR>?", "Why not join <#C024BE7LR>?"),
+    Test.new('preserves Slack named-link format', '<https://example.com|Click here>', '<https://example.com|Click here>'),
+    Test.new('converts HTML anchor tags to Slack link format', '<a href="https://example.com">Click here</a>', '<https://example.com|Click here>'),
   ]
 
   tests.each do |t|
